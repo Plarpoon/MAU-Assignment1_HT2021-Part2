@@ -6,6 +6,7 @@ using Part_2_for_grades_A_and_B.Interfaces;
 
 namespace Part_2_for_grades_A_and_B.States;
 
+//  Interface the Battle state with the IState interface.
 public class BattleS : IState
 {
     private readonly Controller _context;
@@ -16,6 +17,7 @@ public class BattleS : IState
         _context = context;
     }
 
+    //  Main logic behind the Battle mechanic of the adventure.
     public int BattlePhase(int level)
     {
         Console.Write("You shoot the space pirates.. ");

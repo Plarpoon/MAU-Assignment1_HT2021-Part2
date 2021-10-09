@@ -6,6 +6,7 @@ using Part_2_for_grades_A_and_B.Interfaces;
 
 namespace Part_2_for_grades_A_and_B.States;
 
+//  Interface the Patrol state with the IState interface.
 public class Patrol : IState
 {
     private readonly Controller _context;
@@ -15,6 +16,7 @@ public class Patrol : IState
         _context = context;
     }
 
+    //  Main logic behind the Patrol mechanic of the adventure.
     public int Exploration()
     {
         Console.WriteLine("You start a new patrol.");

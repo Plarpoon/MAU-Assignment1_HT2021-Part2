@@ -7,6 +7,7 @@ using Part_2_for_grades_A_and_B.States;
 
 namespace Part_2_for_grades_A_and_B;
 
+//  This is the adventure controller that binds everything together.
 public class Controller
 {
     private readonly IState _battleState;

@@ -16,6 +16,7 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
     {
         ConsoleKeyInfo key;
 
+        //  console initialization including small introduction.
         Console.OutputEncoding = Encoding.UTF8;
         Console.BackgroundColor = ConsoleColor.Black;
         Console.Clear();
@@ -28,6 +29,7 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
 
         do
         {
+            //  Main loop core.
             Console.WriteLine();
             Console.WriteLine("P = Patrol, A = Attack, Q = Quit");
             Console.Write("Reputation [" + _score + "] Level [" + Adventure.GetLevel() + "] Action [P,A,Q]: ");
@@ -50,6 +52,7 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
 
     private static void DoAction(ConsoleKey key)
     {
+        //  Keyboard input reader.
         switch (key)
         {
             case ConsoleKey.P:
