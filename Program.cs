@@ -50,31 +50,37 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
         switch (key)
         {
             case ConsoleKey.P:
-            {
-                var points = Adventure.Explore();
-                if (points > 0)
                 {
-                    Console.WriteLine("You gain " + points + " reputation!");
-                    _score += points;
-                }
+                    var points = Adventure.Explore();
+                    if (points > 0)
+                    {
+                        Console.WriteLine("You gain " + points + " reputation!");
+                        _score += points;
+                    }
 
-                break;
-            }
+                    break;
+                }
             case ConsoleKey.A:
-            {
-                var rounds = Adventure.Battle();
-                if (rounds > 0)
                 {
-                    var points = 10 - rounds;
-                    if (points < 0) points = 0;
+                    var rounds = Adventure.Battle();
+                    if (rounds > 0)
+                    {
+                        var points = 10 - rounds;
+                        if (points < 0) points = 0;
 
-                    _score += points;
+                        _score += points;
 
-                    Console.WriteLine("You gain " + points + " rep points!");
+                        Console.WriteLine("You gain " + points + " rep points!");
+                    }
+
+                    break;
                 }
+            case ConsoleKey.Q:
+                {
+                    Environment.Exit(1);
 
-                break;
-            }
+                    break;
+                }
             default:
                 Console.WriteLine("You can play only with the buttons 'P', 'A' and 'Q'!");
                 break;
