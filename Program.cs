@@ -7,9 +7,16 @@ using System.Text;
 namespace Part_2_for_grades_A_and_B;
 
 public static class Assignment1 // Assignment 1 (HT2021) Part 2
+//  The idea came after seeing part 1 of the assignment and since the
+//  professor provided example was somewhat of an interactive
+//  series of events presenting themselves only in text format
+//  I thought about doing the same but instead of dividing it in three different events
+//  Have a one contiguous adventure from beginning to end
+//  Even tho this small project actually doesn't really have an end.
 {
+    private const string TimeFormat = "HH:mm:ss tt";
     private static readonly Controller Adventure = new();
-    private static int _score;
+    private static double _reputation;
     private static int _nextLevel = 10;
 
     private static void Main()
@@ -30,9 +37,12 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
         do
         {
             //  Main loop core.
+            var now = DateTime.Now;
             Console.WriteLine();
+            Console.WriteLine(now.ToString(TimeFormat));
             Console.WriteLine("P = Patrol, A = Attack, Q = Quit");
-            Console.Write("Reputation [" + _score + "] Level [" + Adventure.GetLevel() + "] Action [P,A,Q]: ");
+            Console.Write("Reputation [" + _reputation + "] Level [" + Adventure.GetLevel() + "] Action [P,A,Q]: ");
+
 
             key = Console.ReadKey();
 
@@ -44,7 +54,7 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
         if (Adventure.GetLevel() >= 10)
         {
             Console.WriteLine();
-            Console.WriteLine("You WIN! Final score [" + _score + "]");
+            Console.WriteLine("You WIN! Final score [" + _reputation + "]");
         }
 
         Console.ReadKey();
@@ -61,7 +71,7 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
                     if (points > 0)
                     {
                         Console.WriteLine("You gain " + points + " reputation!");
-                        _score += points;
+                        _reputation += points;
                     }
 
                     break;
@@ -74,7 +84,7 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
                         var points = 10 - rounds;
                         if (points < 0) points = 0;
 
-                        _score += points;
+                        _reputation += points;
 
                         Console.WriteLine("You gain " + points + " rep points!");
                     }
@@ -92,7 +102,7 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
                 break;
         }
 
-        if (_score < _nextLevel) return;
+        if (_reputation < _nextLevel) return;
         Adventure.SetLevel(Adventure.GetLevel() + 1);
         _nextLevel = Adventure.GetLevel() * 10;
 
