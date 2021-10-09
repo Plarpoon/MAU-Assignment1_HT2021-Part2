@@ -6,6 +6,7 @@
     <RootNamespace>Part_2_for_grades_A_and_B</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
 </Project>
