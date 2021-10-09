@@ -20,8 +20,11 @@ public static class Assignment1 // Assignment 1 (HT2021) Part 2
         Console.BackgroundColor = ConsoleColor.Black;
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.Title = "Space Adventure";
-        Console.WriteLine(">>>> Space Adventure <<<<");
+        Console.Title = "Space Cadet Adventure";
+        Console.WriteLine(">>>> Space Cadet Adventure <<<<");
+        Console.WriteLine(
+            "\n\nYou are a space cadet and your objective\nis to attack pirates and reclaim their loot!");
+        Console.WriteLine("\nStart a 'patrol' to find pirates and attack them!\n");
 
         do
         {
