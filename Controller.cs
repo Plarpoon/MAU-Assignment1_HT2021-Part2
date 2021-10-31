@@ -1,60 +1,57 @@
-﻿//  This project is made for .NET 6 which is the default version on Windows 11
-//  Thus using the new program style linked below
-//  https://docs.microsoft.com/en-us/dotnet/core/tutorials/top-level-templates
-
-using Part_2_for_grades_A_and_B.Interfaces;
+﻿using Part_2_for_grades_A_and_B.Interfaces;
 using Part_2_for_grades_A_and_B.States;
 
-namespace Part_2_for_grades_A_and_B;
-
-//  This is the adventure controller that binds everything together.
-public class Controller
+namespace Part_2_for_grades_A_and_B
 {
-    private readonly IState _battleState;
-    private readonly IState _exploreState;
-    private int _level = 1;
-    private IState _state;
-
-    public Controller()
+    //  This is the adventure controller that binds everything together.
+    public class Controller
     {
-        _exploreState = new Patrol(this);
-        _battleState = new BattleS(this);
+        private readonly IState _battleState;
+        private readonly IState _exploreState;
+        private int _level = 1;
+        private IState _state;
 
-        _state = _exploreState;
-    }
+        public Controller()
+        {
+            _exploreState = new Patrol(this);
+            _battleState = new BattleS(this);
 
-    public int Explore()
-    {
-        return _state.Exploration();
-    }
+            _state = _exploreState;
+        }
 
-    public int Battle()
-    {
-        return _state.BattlePhase(_level);
-    }
+        public int Explore()
+        {
+            return _state.Exploration();
+        }
 
-    public void SetState(IState state)
-    {
-        _state = state;
-    }
+        public int Battle()
+        {
+            return _state.BattlePhase(_level);
+        }
 
-    public void SetLevel(int level)
-    {
-        _level = level;
-    }
+        public void SetState(IState state)
+        {
+            _state = state;
+        }
 
-    public int GetLevel()
-    {
-        return _level;
-    }
+        public void SetLevel(int level)
+        {
+            _level = level;
+        }
 
-    public IState GetExplorationState()
-    {
-        return _exploreState;
-    }
+        public int GetLevel()
+        {
+            return _level;
+        }
 
-    public IState GetBattlePhaseState()
-    {
-        return _battleState;
+        public IState GetExplorationState()
+        {
+            return _exploreState;
+        }
+
+        public IState GetBattlePhaseState()
+        {
+            return _battleState;
+        }
     }
 }

@@ -1,60 +1,59 @@
-﻿//  This project is made for .NET 6 which is the default version on Windows 11
-//  Thus using the new program style linked below
-//  https://docs.microsoft.com/en-us/dotnet/core/tutorials/top-level-templates
+﻿using Part_2_for_grades_A_and_B.Interfaces;
+using System;
+using System.Threading;
 
-using Part_2_for_grades_A_and_B.Interfaces;
-
-namespace Part_2_for_grades_A_and_B.States;
-
-//  Interface the Battle state with the IState interface.
-public class BattleS : IState
+namespace Part_2_for_grades_A_and_B.States
 {
-    private readonly Controller _context;
-    private int _rounds;
-
-    public BattleS(Controller context)
+    //  Interface the Battle state with the IState interface.
+    public class BattleS : IState
     {
-        _context = context;
-    }
+        private readonly Controller _context;
+        private int _rounds;
 
-    //  Main logic behind the Battle mechanic of the adventure.
-    public int BattlePhase(int level)
-    {
-        Console.Write("You shoot the space pirates.. ");
-
-        _rounds++;
-
-        Thread.Sleep(1000);
-
-        var maxRandomization = 10 - level;
-        if (maxRandomization < 1) maxRandomization = 1;
-
-        var ran = RandomGenerator.GetRandomNumber(maxRandomization);
-        if (ran == 0)
+        public BattleS(Controller context)
         {
-            Console.WriteLine("they are dead!");
-            _context.SetState(_context.GetExplorationState());
-
-            var tempRound = _rounds;
-            _rounds = 0;
-
-            return tempRound;
+            _context = context;
         }
 
-        Console.WriteLine("but your aim sucks.");
+        //  Main logic behind the Battle mechanic of the adventure.
+        public int BattlePhase(int level)
+        {
+            Console.Write("You shoot the space pirates.. ");
 
-        if (_rounds < 9) return 0;
-        Console.WriteLine("You emergency warp drive to safety.");
-        _context.SetState(_context.GetExplorationState());
+            _rounds++;
 
-        _rounds = 0;
+            Thread.Sleep(1000);
 
-        return 0;
-    }
+            var maxRandomization = 10 - level;
+            if (maxRandomization < 1) maxRandomization = 1;
 
-    public int Exploration()
-    {
-        Console.WriteLine("You can't escape!");
-        return 0;
+            var ran = RandomGenerator.GetRandomNumber(maxRandomization);
+            if (ran == 0)
+            {
+                Console.WriteLine("they are dead!");
+                _context.SetState(_context.GetExplorationState());
+
+                var tempRound = _rounds;
+                _rounds = 0;
+
+                return tempRound;
+            }
+
+            Console.WriteLine("but your aim sucks.");
+
+            if (_rounds < 9) return 0;
+            Console.WriteLine("You emergency warp drive to safety.");
+            _context.SetState(_context.GetExplorationState());
+
+            _rounds = 0;
+
+            return 0;
+        }
+
+        public int Exploration()
+        {
+            Console.WriteLine("You can't escape!");
+            return 0;
+        }
     }
 }
